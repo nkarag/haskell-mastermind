@@ -226,18 +226,6 @@ answer2code ans =
 
 
 --------------------------- Hard Mode ------------------------------------ 
---converts char to int counterpart--
-numRep :: CharCode -> Code
-numRep (d1,d2,d3,d4) = (digitToInt d1, digitToInt d2, digitToInt d3, digitToInt d4)
-
-numRepList :: [CharCode] -> [Code]
-numRepList [(d1,d2,d3,d4)] = [(digitToInt d1, digitToInt d2, digitToInt d3, digitToInt d4)]
-
-charToNum :: Code -> CharCode
-charToNum (d1,d2,d3,d4) = (intToDigit d1, intToDigit d2, intToDigit d3, intToDigit d4)
-
-charToNumList :: [Code] -> [CharCode]
-charToNumList [(d1,d2,d3,d4)] = [(intToDigit d1, intToDigit d2, intToDigit d3, intToDigit d4)]
 
 -- | Plays mastermind with computer choosing the secret code
 computerDoestheGuessingHard :: IO(Int) -- ^ returns number of moves until secret code is found
