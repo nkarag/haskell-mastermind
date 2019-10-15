@@ -23,7 +23,7 @@ playGameHard :: StdGen -> IO()
 playGameHard gen = do
     putStrLn "You chose the difficulty level: Hard"
     putStrLn "You go first.."
-    putStrLn "Choose your secret code (a 4 digit number)"
+    putStrLn "Choose your secret code (a 4 digit lowercaps letter combination, ex. adbu)"
     putStrLn "Press <enter> when you are ready"
     _ <- getLine
     numOfMovesComputer <- computerDoestheGuessing
