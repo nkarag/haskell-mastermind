@@ -1,7 +1,6 @@
 module Main where
 
 import Mastermind
-import MastermindHard
 import System.Random
 
 main :: IO ()
@@ -12,10 +11,12 @@ main = do
     difficulty <- getLine
     if difficulty == "E"
         then  
-            gen <- getStdGent
+            do
+            gen <- getStdGen
             playGame gen 
         else
-            gen <- getStdGent
+            do
+            gen <- getStdGen
             playGameHard gen
 
 playGameHard :: StdGen -> IO()
