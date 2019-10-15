@@ -14,6 +14,11 @@ module Mastermind
         ,getGuessResult
         ,generateSecretCode
         ,answer2code
+        ,computerDoestheGuessingHard
+        ,humanDoestheGuessingHard
+        ,getGuessResultHard
+        ,generateSecretCodeHard
+        ,answer2codeHard        
     ) where
 
 import Data.Maybe (fromJust)

@@ -26,7 +26,7 @@ playGameHard gen = do
     putStrLn "Choose your secret code (a 4 digit lowercaps letter combination, ex. adbu)"
     putStrLn "Press <enter> when you are ready"
     _ <- getLine
-    numOfMovesComputer <- computerDoestheGuessing
+    numOfMovesComputer <- computerDoestheGuessingHard
     putStrLn "\n!!!!!!!!!!!!!!!!!!\n"
     putStrLn $ "Great! I have found the secret code in " ++ (show numOfMovesComputer) ++ " moves!"
     putStrLn "Am I an awesome player or what?"
