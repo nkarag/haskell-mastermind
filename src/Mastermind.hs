@@ -27,7 +27,7 @@ import System.Random
 import System.IO
 import Data.Char (digitToInt)
 import Data.Char (intToDigit)
-import Data.Char (ord)
+import Data.Char (chr)
 -- import Debug.Trace
 
 -- | A mastermind secret code
@@ -362,7 +362,7 @@ humanDoestheGuessingHard gen = do -- undefined
     
     -- generate a secret code
     -- gen <- getStdGen
-    let scode = generateSecretCode gen
+    let scode = generateSecretCodeHard gen
 
     -- debug
     -- putStrLn $ "Secret Code = " ++ (printCode scode)
@@ -375,15 +375,15 @@ humanDoestheGuessingHard gen = do -- undefined
     return finalNumOfMoves    
 
     where
-        goloop2 :: Int -> Code -> IO(Int)
+        goloop2 :: Int -> CharCode -> IO(Int)
         goloop2 moves scode = do 
             putStrLn "What is your best guess?"
-            putStr "Give your guess (a 4-digit number): "
+            putStr "Give your guess (a 4 digit lowercaps letter combination, ex. adbu): "
             hFlush stdout
             guess <- getLine
             let 
-                gcode = answer2code guess
-                Result numOfWhites numOfBlacks = getGuessResult gcode scode
+                gcode = answer2codeHard guess
+                Result numOfWhites numOfBlacks = getGuessResultHard gcode scode
             if numOfBlacks == 4 && numOfWhites == 0 
                 then 
                     return moves
@@ -393,16 +393,16 @@ humanDoestheGuessingHard gen = do -- undefined
                         putStrLn $ "Number of Whites = " ++ (show numOfWhites)
                         goloop2 (moves + 1) scode
 
-generateSecretCodeHard :: StdGen -> Code
+generateSecretCodeHard :: StdGen -> CharCode
 generateSecretCodeHard gen = 
     let
         ls = take 4 (randoms gen :: [Int])        
-        [s1,s2,s3,s4] = map (\s -> abs $ mod s 10 ) ls
-    in (s1,s2,s3,s4) 
+        [s1,s2,s3,s4] = map (\s -> abs $ mod s 25 ) ls
+    in (chr (s1 + 97), chr (s2 + 97), chr (s3 + 97), chr (s4 + 97))
 
-answer2codeHard :: String -> Code
+answer2codeHard :: String -> CharCode
 answer2codeHard ans = 
     let
         -- get prefix
         [c1,c2,c3,c4] = take 4 ans
-    in (digitToInt c1, digitToInt c2, digitToInt c3, digitToInt c4)
+    in (c1,c2,c3,c4)

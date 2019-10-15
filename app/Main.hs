@@ -41,7 +41,7 @@ playGameHard gen = do
     let 
         (_, genNew) = (random gen) :: (Int, StdGen)
         -- genNew = snd $ random gen 
-    numOfMovesHuman <- humanDoestheGuessing genNew
+    numOfMovesHuman <- humanDoestheGuessingHard genNew
     putStrLn $ "\nCongratulations!!!\nYou have found the secret code in just " ++ (show numOfMovesHuman) ++ " moves!"
 
     if numOfMovesComputer < numOfMovesHuman
