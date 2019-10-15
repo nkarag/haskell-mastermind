@@ -1,6 +1,7 @@
 module Main where
 
 import Mastermind
+import MastermindHard
 import System.Random
 
 main :: IO ()
